@@ -10,6 +10,7 @@ RSpec.feature "Timeline", type: :feature do
     fill_in "Email", with: "gurewr@gmail.com"
     fill_in "Username", with: "rwerwrw"
     fill_in "Password", with: "123456"
+    fill_in "Age", with: "15"
     click_button "Sign up"
 
     expect(page).to have_content("NEW POST Logout")

@@ -1,8 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
-
-    private
-  
-      def sign_up_params
-        params.require(:user).permit(:email, :password, :username)
-      end
+  before_action :configure_permitted_parameters
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :username, :age])
+  end
   end

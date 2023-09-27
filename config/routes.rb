@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   get '/profile/:username', to: 'user_profiles#show', as: :user_profile
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :posts
