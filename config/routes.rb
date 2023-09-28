@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   end
   match "/404", to: "errors#not_found", via: :all
 
+  get 'terms_and_conditions', :to => redirect('/terms.html')
 
 end
