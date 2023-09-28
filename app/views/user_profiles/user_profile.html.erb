@@ -7,19 +7,12 @@
 </head>
 
 <body>
-
 <div class="container-right">
     <% if user_signed_in? %>
-      <p> <!--  moved logout link in the container so it can be styled accordingly -->
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      </p>
-      <%= link_to current_user.username, user_profile_path(current_user.username), class: "username no-underline" %>
+        <%= link_to current_user.username, user_profile_path(current_user.username), class: "username no-underline" %>
     <% end %>
 </div>
-
-<div>
-  <%= link_to "Acebook", posts_path, class: "title no-underline" %>
-</div>
+<div><%= link_to "Acebook", posts_path, class: "title no-underline" %></div>
 
 <!-- Write new post button -->
 <% if user_signed_in? && current_user.username == @username %>
@@ -40,7 +33,6 @@
 <% end %>
 
 <!-- Separate posts with outline boxes -->
-
 <div>
     <% @posts.reverse.each do |post| %>
         <div class="post-box">
@@ -67,70 +59,55 @@
 <style>
 
 body {
-  color: white;
-  font-family: 'Roboto';
-  font-size: 15px;
-  background-color: #191B1E;
+    color: white;
+    font-family: 'Roboto';
+    font-size: 15px;
+    background-color: #191B1E;
 }
-
-
 .post-message { /*this will separate the 'post-message' from the post-box and center it */
   margin: 0; 
   padding: 10px; 
   text-align: center; 
 }
 
-
 post_top {
   display: flex;
   justify-content: space-between;
 }
 
-
 .custom-btn{
-  background-color:#643F47; 
-  color: white; 
-  padding: 15px 32px; 
-  text-align: center;
+    background-color:#643F47; 
+    color: white; 
+    padding: 15px 32px; 
+    text-align: center;
 }
-
-
 .container-right{
-  /*NB: use borders to visualise the elements and their positioning for better decisions*/
-  /* border-color: white;
-  border-width: thin;
-  border-style: solid;
-  color: white; */
-  text-align: right;
-  padding: 20px;
+    text-align: right;
+  
 }
-
 
 .username {
-  color: #C28A6A;
-  font-size: 18px;
-  text-align: right;
+    color: #C28A6A;
+    font-size: 18px;
+    margin-right: 20px;
 }
-
 
 .title {
-  color: #C28A6A;
-  font-size: 40px;
-  padding: 10px;
+    color: #C28A6A;
+    font-size: 40px;
+    padding: 10px;
 }
-
 
 .post-box {
-  border-color: white;
-  border-width: thin;
-  border-style: solid;
-  color: white;
-  margin: 20px; /*Adds spacing between posts-boxes*/
-  padding: 20px; /*Adds padding to the posts-boxes*/
-  border-radius: 15px;
-  position: relative; /* N.B: Don't forget this as it will not show the edit/delete boxes!*/
+    border-color: white;
+    border-width: thin;
+    border-style: solid;
+    color: white;
+    margin: 20px; /*Adds spacing between posts-boxes*/
+    padding: 20px; /*Adds padding to the posts-boxes*/
+    border-radius: 15px;
+    position: relative; /* N.B: Don't forget this as it will not show the edit/delete boxes!*/
 }
-
 
 .user-name { /*this will separate the 'username' from the post-box and aligns it on the left top corner */
   margin: 0; 
@@ -139,59 +116,53 @@ post_top {
   text-align: left; 
 }
 
-
 .post-message { /*this will separate the 'post-message' from the post-box and center it */
   margin: 0; 
   padding: 10px; 
   text-align: center;
 }
 
-
 .no-underline {
   text-decoration: none;
 }
-
 
 .delete-button {
-  background-color: #643F47;
-  color: white;
-  padding: 5px 10px;
-  text-align: center;
-  position: absolute;
-  bottom: 5px; /* Adjust the distance from the bottom as needed */
-  right: 5px; /* Adjust the distance from the right as needed */
-  border-radius: 7px;
-  text-decoration: none;
+    background-color: #643F47;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    position: absolute;
+    bottom: 5px; /* Adjust the distance from the bottom as needed */
+    right: 5px; /* Adjust the distance from the right as needed */
+    border-radius: 7px;
+    text-decoration: none;
 }
-
-
 .no-underline {
   text-decoration: none;
 }
 
-
 .delete-button:hover {
-  background-color: #542d36;
+    background-color: #542d36;
 }
-
 
 .edit-button {
-  background-color: #643F47;
-  color: white;
-  padding: 5px 10px;
-  text-align: center;
-  position: absolute;
-  bottom: 5px; /* Adjust the distance from the bottom as needed */
-  right: 70px; /* Adjust the distance from the right as needed */
-  border-radius: 7px;
-  text-decoration: none;
+    background-color: #643F47;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    position: absolute;
+    bottom: 5px; /* Adjust the distance from the bottom as needed */
+    right: 70px; /* Adjust the distance from the right as needed */
+    border-radius: 7px;
+    text-decoration: none;
 }
-
 
 .edit-button:hover {
-  background-color: #542d36;
+    background-color: #542d36;
 }
-
 </style>
 
+<% if user_signed_in? %>
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+<% end %>
 

@@ -13,7 +13,7 @@ RSpec.feature "Timeline", type: :feature do
     check "user_isAgeOver13"
     click_button "Sign up"
 
-    expect(page).to have_content(/WRITE NEW POST/)
+    expect(page).to have_content("NEW POST Logout")
   end
 
   scenario "Cannot sign up with invalid email" do
