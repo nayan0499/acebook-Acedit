@@ -9,9 +9,18 @@
 <body>
 
 <!--  Adds actual username instead of hardcoding it  -->
-<div class = "container-right no-underline"><%= link_to @username, user_profile_path(username: @username), class: "username no-underline " %></div>
+<div class = "container-right no-underline">
+  <%= link_to @username, user_profile_path(username: @username), class: "username no-underline " %>
+    <p>
+      <% if user_signed_in? %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% end %>
+    </p>
+</div>
 
-    <div><h1 class="title">Acebook</h1></div>
+<div>
+<h1 class="title">Acebook</h1>
+</div>
 
 <!--  Write new post button -->
 <center>
@@ -41,9 +50,7 @@ and associates it with the respective username -->
                 <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to delete this post?" }, class: "delete-button" %>
             <% end %>
       <post_top>
-     
         <div class = "post_top_text"><%= link_to post.user.username, user_profile_path(username: post.user.username), class:"no-underline white-font"%></div>
-
         <p class="post_top_text" style="text-align: right;"><%= post.created_at if post.created_at %></p>
       </post_top>
       <p class="post-message"><%= simple_format(post.message).html_safe  %></p> <!--  This allows multiple lines (paragraphs to be entered while writing the post message)  -->
@@ -57,12 +64,17 @@ and associates it with the respective username -->
 
 <!--  Formatting for each class -->
 <style>
+
 .left {
   text-align: right;
 }
+
+
 .white-font{
   color: white;
 }
+
+
 body {
     color: white;
     font-family: 'Roboto';
@@ -70,24 +82,35 @@ body {
     text-align: center;
     background-color: #191B1E;
 }
+
+
 .container-right{
-    text-align: right;
-  
+  /*NB: use borders to visualise the elements and their positioning for better decisions*/
+  /* border-color: white;
+  border-width: thin;
+  border-style: solid;
+  color: white; */
+  text-align: right;
+  margin-right: 20px;
+  padding: 20px;
 }
+
 
 .username {
     color: #C28A6A;
     font-size: 18px;
     text-align: right;
-    margin-right: 20px;
 }
 
+
 .title {
-    color: #C28A6A;
-    font-size: 40px;
-    text-align: left;
-    padding: 10px;
+  color: white;
+  color: #C28A6A;
+  font-size: 40px;
+  text-align: left;
+  padding: 10px;
 }
+
 
 .post-box {
     border-color: white;
@@ -101,6 +124,7 @@ body {
     position: relative;
 }
 
+
 .delete-button {
     background-color: #643F47;
     color: white;
@@ -112,13 +136,17 @@ body {
     border-radius: 7px;
     text-decoration: none;
 }
+
+
 .no-underline {
   text-decoration: none;
 }
 
+
 .delete-button:hover {
     background-color: #542d36;
 }
+
 
 .edit-button {
     background-color: #643F47;
@@ -132,9 +160,11 @@ body {
     text-decoration: none;
 }
 
+
 .edit-button:hover {
     background-color: #542d36;
 }
+
 
 .post_top_text { /*this will separate the 'username' from the post-box and aligns it on the left top corner */
   margin: 0; 
@@ -143,11 +173,13 @@ body {
   text-align: left; 
 }
 
+
 .post-message { /*this will separate the 'post-message' from the post-box and center it */
   margin: 0; 
   padding: 10px; 
   text-align: center; 
 }
+
 
 post_top {
   display: flex;
@@ -155,8 +187,3 @@ post_top {
 }
 
 </style>
-
-<% if user_signed_in? %>
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-<% end %>
-
