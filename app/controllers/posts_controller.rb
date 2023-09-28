@@ -9,6 +9,8 @@ class PostsController < ApplicationController
   def create
     if params[:post][:message] == ""
       redirect_to new_post_path, alert: "Cannot post empty message."
+    elsif params[:post][:message].tr('.?!"@$&', '').downcase.split(" ").include?("facebook")
+      redirect_to new_post_path, alert: "The F-word is forbidden!"
     else
       @post = Post.new(post_params)
       @post.user_id = current_user.id # Set the user_id attribute
