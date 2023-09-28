@@ -35,4 +35,33 @@ RSpec.feature "Timeline", type: :feature do
     expect(page).to have_content("Cannot post empty message.")
   end
 
+  scenario "Cannot submit post with the string 'facebook' and variations." do
+
+    user = FactoryBot.create(:user) 
+    visit new_user_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Log in"
+    visit "/posts"
+    click_button "WRITE NEW POST"
+    fill_in "Message", with: "facebook"
+    click_button "Submit"
+    expect(page).to have_content("The F-word is forbidden!")
+    visit "/posts"
+    click_button "WRITE NEW POST"
+    fill_in "Message", with: "FaceBook"
+    click_button "Submit"
+    expect(page).to have_content("The F-word is forbidden!")
+    visit "/posts"
+    click_button "WRITE NEW POST"
+    fill_in "Message", with: "facebook is a rubbish site"
+    click_button "Submit"
+    expect(page).to have_content("The F-word is forbidden!")
+    visit "/posts"
+    click_button "WRITE NEW POST"
+    fill_in "Message", with: "I hate facebook."
+    click_button "Submit"
+    expect(page).to have_content("The F-word is forbidden!")
+  end
+
 end

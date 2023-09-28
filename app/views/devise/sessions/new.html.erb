@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Roboto';
-            font-size: 15px;
+            font-size: 18px;
             background-color: #191B1E;
             display: flex; /* Establishes flex container, flexible box layout */
             flex-direction: column;
@@ -16,7 +16,7 @@
             justify-content: flex-start; /* Aligns items to the start of the flex container */
             height: 100vh; /* Sets the height of the body to 100% of the viewport height */
             margin: 0;
-            padding: 50px;
+            padding: 250px;
         }
 
         .title {
@@ -93,11 +93,13 @@
         .actions input[type="submit"] {
             background-color: #643F47; /* Change the background color */
             color: #FFF; /* Change the text color to white */
-            padding: 15px 20px; /* Increase padding to make it slightly bigger */
+            padding: 20px; /* Increase padding to make it slightly bigger */
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            width: 100%;
+            max-width: 300px;
         }
 
         .actions input[type="submit"]:hover {
