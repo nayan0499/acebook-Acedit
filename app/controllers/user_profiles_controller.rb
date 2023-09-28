@@ -4,7 +4,7 @@ class UserProfilesController < ApplicationController
         @user = User.find_by(username: params[:username])
         @current_username = current_user.username
         @username = params[:username]
-        @posts = Post.where(user_id: @user.id).order("created_at DESC")
+        @posts = Post.where(user_id: @user.id).order("created_at ASC")
 
         # Set @current_id if a user is signed in
         @current_id = current_user.id if user_signed_in?
