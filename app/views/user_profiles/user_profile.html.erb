@@ -9,7 +9,7 @@
 <body>
 <div class="container-right">
     <% if user_signed_in? %>
-        <%= link_to current_user.username, user_profile_path, class: "username no-underline" %>
+        <%= link_to current_user.username, user_profile_path(current_user.username), class: "username no-underline" %>
     <% end %>
 </div>
 <div><%= link_to "Acebook", posts_path, class: "title no-underline" %></div>
