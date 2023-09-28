@@ -15,7 +15,7 @@ class PostsController < ApplicationController
       @post = Post.new(post_params)
       @post.user_id = current_user.id # Set the user_id attribute
       if @post.save
-        redirect_to posts_path
+        redirect_to(session[:previous_path].presence || posts_path)
       end
     end
   end
