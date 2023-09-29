@@ -55,6 +55,13 @@
                     <%= f.check_box :isAgeOver13 %>
                     <%= f.label :isAgeOver13, "Confirm you're over 13" %>
             </div>
+
+            <div class="field remember">
+                <%= f.check_box :agreed_to_terms %>
+              <%= f.label :agreed_to_terms do %>
+                I have read and agree to the <%= link_to("Acebook terms and conditions", terms_and_conditions_path, target: "_blank")%>  
+              <% end %>
+            </div>
            
 
     <div class="actions">
@@ -106,7 +113,6 @@ body {
   color: #FFF; /* Set label text color to white */
 }
 
-
 .title {
   text-decoration: none; /* This removes the underline from the link (Acebook)*/
   color: #C28A6A;
@@ -149,6 +155,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.field .hint {/* This bolck , as the one below working together, deals with each box being align vertically on the right side*/
+  font-size: 12px;
 }
 
 .field input[type="text"], /* This bolck , as the one above working together, deals with each box being align vertically on the right side*/
